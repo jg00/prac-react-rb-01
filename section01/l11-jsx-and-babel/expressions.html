@@ -31,9 +31,18 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="text/babel">
-      const title = "React From the Beginning";
 
+    <script type="text/babel">
+      const title = "Beginning of Time";
+      const name = "Robert Bunch";
+      // const saleOn = true;
+      const hello = React.createElement("p", null, "Well Hello!");
+
+      function saleOn() {
+        return true;
+      }
+
+      // Some Javascript and some JSX
       const markup = (
         <div className="row">
           <div className="col s2">
@@ -43,15 +52,18 @@
               </div>
               <div className="card-content">
                 <p>{title}</p>
-                <p>Robert Bunch</p>
+                <p>{name}</p>
+                {React.createElement("p", null, "Well Hello!")}
               </div>
               <div className="card-action">
-                <a href="#">$9.99</a>
+                <a href="#">${saleOn() ? 9.99 : 59.99}</a>
               </div>
             </div>
           </div>
         </div>
       );
+
+      console.log(markup); // Returns a React element (that are plain objects)
 
       ReactDOM.render(markup, document.getElementById("root"));
     </script>

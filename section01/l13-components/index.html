@@ -28,32 +28,18 @@
       integrity="sha256-L/S5mZS8SPJVWoKym3Zwgf2f3/s3X3MaZ7QBA9HdnN8="
       crossorigin="anonymous"
     ></script>
+
+    <!-- Custom Components -->
+    <script src="./Cards.js" type='text/babel'"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="text/babel">
       const title = "React From the Beginning";
 
-      const markup = (
-        <div className="row">
-          <div className="col s2">
-            <div className="card hoverable small">
-              <div className="card-image">
-                <img src="http://lorempixel.com/400/400/nature/" />
-              </div>
-              <div className="card-content">
-                <p>{title}</p>
-                <p>Robert Bunch</p>
-              </div>
-              <div className="card-action">
-                <a href="#">$9.99</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-
-      ReactDOM.render(markup, document.getElementById("root"));
+      ReactDOM.render(
+      <Card />  
+      , document.getElementById("root"));
     </script>
   </body>
 </html>
