@@ -1,7 +1,7 @@
 // ReactDOM.render here
 function app() {
   ReactDOM.render(
-    <div>
+    <div className="row">
       <Card data={data[0]} />
       <Card data={data[1]} />
       <Card data={data[2]} />
