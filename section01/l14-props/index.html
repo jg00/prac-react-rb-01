@@ -29,14 +29,20 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Custom Components -->
+    <!-- Custom Components and other files -->
     <script src="./Cards.js" type='text/babel'"></script>
+    <script src="./data.js"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="text/babel">
       ReactDOM.render(
-      <Card name="Robert Bunch" />  
+        <div className='row'>
+          <Card name={data[0].instructor} title={data[0].course}/>  
+          <Card name={data[1].instructor} title={data[1].course}/>  
+          <Card name={data[2].instructor} title={data[2].course}/>  
+          <Card name={data[3].instructor} title={data[3].course}/>  
+        </div>
       , document.getElementById("root"));
     </script>
   </body>
