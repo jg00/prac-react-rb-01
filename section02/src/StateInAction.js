@@ -1,11 +1,14 @@
 /*
   Class component
   - Initialize state
-  - Update state
+  - Update state 
+    - update by using the setter this.setState() function and have React change it for us.
+    - setState() schedules an update to a component’s state object. When state changes, the component responds by re-rendering.
   - Render state
   - Render props
   - Use of () => {} function to inherit 'this' from the containing object
 */
+
 import React, { Component } from "react";
 
 class StateInAction extends Component {
@@ -26,7 +29,7 @@ class StateInAction extends Component {
 
     // 'this' References the Window object with regular function
     setTimeout(function() {
-      console.log("here", this);
+      console.log("here", this); // Because of the new 'this', we won't have this.setState() function.
     }, 2000);
   }
 
