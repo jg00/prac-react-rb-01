@@ -45,10 +45,12 @@ class CardSet extends Component {
         //   <h3>{card.course}</h3>
         // </div>
 
+        // Call handleDelete()
         // <div key={i} className="col s3" onClick={() => this.handleDelete(i)}>
         //   <Card card={card} />
         // </div>
 
+        // Pass handleDelete method to Card
         <div key={i} className="col s3">
           <Card card={card} cl={() => this.handleDelete(i)} />
         </div>
