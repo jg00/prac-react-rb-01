@@ -1,10 +1,14 @@
+/*
+  File notes:
+  01 App-v01-lifecycle.js
+    - Rename to App.js to run
+    - Kept for reference of lifecycle
+*/
+
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import config from "./config";
-
-import Headers from "./Headers";
-import Modal from "./Modal";
 
 class App extends Component {
   constructor() {
@@ -18,15 +22,34 @@ class App extends Component {
       high: "",
       low: "",
       icon: "",
-      isRaining: "",
-      showModal: true
+      isRaining: ""
     };
+
+    /*
+    // Materialize trigger modal - consturctor is not the proper place to initialize
+    let elems = document.querySelectorAll(".modal");
+    let instances = window.M.Modal.init(elems); // Materialize.Modal.Initialize(everything with a class of modal); Remember M exists but it is attached to the window object.
+    */
   }
 
   // React will call componentDidMount() automatically after the first render()
   componentDidMount() {
     console.log("componentDidMount running..");
     this.getCityWeather("London");
+    // const url = `https://api.openweathermap.org/data/2.5/weather?q=London&units=imperial&appid=${config.apiKey}`;
+
+    // axios.get(url).then(resp => {
+    //   // console.log(resp.data);
+
+    //   this.setState({
+    //     temp: resp.data.main.temp,
+    //     high: resp.data.main.temp_max,
+    //     low: resp.data.main.temp_min,
+    //     weather: resp.data.weather[0].description,
+    //     icon: resp.data.weather[0].icon,
+    //     cityName: resp.data.name
+    //   });
+    // });
 
     // Materialize trigger modal - Propert lifecycle to initialize
     let elems = document.querySelectorAll(".modal");
@@ -34,7 +57,11 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapShot) {
-    console.log("App.js componentDidUpdate running..");
+    console.log("componentDidUpdate running..");
+    // console.log(prevProps);
+    // console.log(prevState);
+    // console.log(snapShot);
+    // console.log(this.state);
 
     if (this.state.weather !== prevState.weather) {
       const isRaining = this.state.weather.includes("rain");
@@ -52,6 +79,23 @@ class App extends Component {
 
     const city = document.querySelector("#city").value;
     this.getCityWeather(city);
+    // const city = document.querySelector("#city").value;
+    // console.log(city);
+
+    // const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${config.apiKey}`;
+
+    // axios.get(url).then(resp => {
+    //   // console.log(resp.data);
+
+    //   this.setState({
+    //     temp: resp.data.main.temp,
+    //     high: resp.data.main.temp_max,
+    //     low: resp.data.main.temp_min,
+    //     weather: resp.data.weather[0].description,
+    //     icon: resp.data.weather[0].icon,
+    //     cityName: resp.data.name
+    //   });
+    // });
   };
 
   getCityWeather = city => {
@@ -60,6 +104,8 @@ class App extends Component {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${config.apiKey}`;
 
     axios.get(url).then(resp => {
+      // console.log(resp.data);
+
       this.setState({
         temp: resp.data.main.temp,
         high: resp.data.main.temp_max,
@@ -71,25 +117,17 @@ class App extends Component {
     });
   };
 
-  removeModal = e => {
-    this.setState({
-      showModal: false
-    });
-  };
-
   render() {
     console.log("render running..");
+    // console.log(this.state.temp);
     const iconUrl = `http://openweathermap.org/img/wn/${this.state.icon}@2x.png`;
 
     return (
       <div className="App">
         <div className="row">
           <div className="col s6 offset-s3">
-            <button onClick={this.removeModal} className="btn">
-              Remove from DOM
-            </button>
-
-            <Headers weatherInfo={this.state} />
+            <h1>{this.state.temp}</h1>
+            <h1>{this.state.isRaining}</h1>
 
             {/* <!-- Modal Trigger --> */}
             <a
@@ -106,11 +144,25 @@ class App extends Component {
         </div>
 
         {/* <!-- Modal Structure --> */}
-        {this.state.showModal ? (
-          <Modal iconUrl={iconUrl} weatherInfo={this.state} />
-        ) : (
-          ""
-        )}
+        <div id="modal1" className="modal">
+          <div className="modal-content">
+            <h4>{this.state.cityName}</h4>
+            <p>
+              High: {this.state.high} - Low: {this.state.low}
+            </p>
+            <p>
+              {this.state.weather} <img src={iconUrl} alt={this.state.icon} />
+            </p>
+          </div>
+          <div className="modal-footer">
+            <a
+              href="#!"
+              className="modal-close waves-effect waves-green btn-flat"
+            >
+              Agree
+            </a>
+          </div>
+        </div>
       </div>
     );
   }
