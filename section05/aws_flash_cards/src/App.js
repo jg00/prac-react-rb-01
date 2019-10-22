@@ -19,7 +19,7 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.cardStyle);
+    console.log(this.state.cardStyle); // check
     return (
       <div className="App align-items-center d-flex">
         <div className="container">
