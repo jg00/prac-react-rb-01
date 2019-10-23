@@ -1,6 +1,7 @@
 import React from "react";
 
 function MultiCard(props) {
+  console.log("From MultiCard", props);
   const question = props.questionData;
   console.log(question);
 
@@ -13,14 +14,20 @@ function MultiCard(props) {
     );
   });
 
+  const answerIndex = question.options.indexOf(question.answer);
+  const answerLetter = choices[answerIndex];
+
   return (
     <div>
+      <div>MultiCard (front)</div>
       <div className="card-back">
-        <div>AWS Service</div>
+        <div>{question.service}</div>
         <ul className="multi">{options}</ul>
       </div>
 
-      <div className="card-front">multiChoice Answer</div>
+      <div className="card-front">
+        {answerLetter}. {question.answer}
+      </div>
     </div>
   );
 }

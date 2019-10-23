@@ -19,8 +19,8 @@ class FlashCard extends Component {
 
     this.state = {
       flipClass: "",
-      questionData: "",
-      ready: false
+      questionData: ""
+      // ready: false
     };
   }
 
@@ -48,14 +48,18 @@ class FlashCard extends Component {
 
     axios.get(path).then(response => {
       this.setState({
-        questionData: response.data,
-        ready: true
+        questionData: response.data
+        // ready: true
       });
+
+      this.props.nowReady(); // Will reset ready:true state in parent App
     });
   };
 
   render() {
-    if (!this.state.ready) {
+    // 1 Render Spinner or
+    // Handle props.ready in parent App
+    if (!this.props.ready) {
       this.newCard();
       return (
         <div className="spinner-wrapper">
@@ -64,6 +68,7 @@ class FlashCard extends Component {
       );
     }
 
+    // 2 Render FlashCard
     const cardStyle = this.props.cardStyle;
     let card;
     if (cardStyle === "Multi") {
@@ -90,7 +95,7 @@ class FlashCard extends Component {
           </div>
         </div>
 
-        <div>{this.props.cardStyle}</div>
+        {/* <div>{this.props.cardStyle}</div> */}
 
         <button onClick={this.newCard} className="btn btn-primary btn-lg">
           Next Question
