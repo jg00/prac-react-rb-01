@@ -6,7 +6,7 @@ import "./index.css";
 import Calculator from "./temperatureApp/Calculator";
 import * as serviceWorker from "./serviceWorker";
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById("root"));
 // ReactDOM.render(<FormPractice />, document.getElementById("root"));
 ReactDOM.render(<Calculator />, document.getElementById("root"));
 
