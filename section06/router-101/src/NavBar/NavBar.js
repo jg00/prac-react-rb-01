@@ -5,6 +5,7 @@ import "./NavBar.css";
 
 function NavBar(props) {
   console.log(props);
+
   return (
     <nav className="black">
       <div className="nav-wrapper">

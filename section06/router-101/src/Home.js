@@ -3,7 +3,7 @@
 import React from "react";
 
 function Home(props) {
-  console.log(props);
+  // console.log("Home.js", props.history.location.pathname);
 
   // Example 1
   // setTimeout(() => {
