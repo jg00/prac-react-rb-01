@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 
 import Home from "./Home";
-import About from "./About";
+// import About from "./About";
+import Movie from "./Movie";
 
 function App() {
   return (
@@ -13,17 +14,20 @@ function App() {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
+
+          {/* <li> */}
+          {/* <Link to="/about">About</Link> */}
+          {/* </li> */}
         </ul>
 
         <Route exact path="/" component={Home} />
 
-        <Route exact path="/about/:who" component={About} />
+        {/* <Route exact path="/about/:who" component={About} /> */}
         {/* <Route exact path="/about/us" component={About} /> */}
         {/* <Route exact path="/about/company" component={About} /> */}
         {/* <Route exact path="/about/investors" component={About} /> */}
+
+        <Route exact path="/movie/:movieId" component={Movie} />
       </div>
     </Router>
   );
