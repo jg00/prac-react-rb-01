@@ -5,7 +5,23 @@ const seedData = [
 ];
 
 export default (state = seedData, action) => {
-  return state;
+  console.log("Frozen Reducer is running!");
+  console.log(action); // {type: in_the_background_redux_perfors_its_own_actions}
+
+  if (action.type === "updateFrozen") {
+    console.log("I care about this action in frozenReducer!!");
+
+    // We dont want to mutate state directly
+    const newState = [...state];
+    if (action.payload.operation === "+") {
+      newState[action.payload.index].quantity++;
+    } else if (action.payload.operation === "-") {
+      newState[action.payload.index].quantity--;
+    }
+    return newState;
+  } else {
+    return state;
+  }
 };
 
 /*
@@ -22,4 +38,10 @@ export default (state = seedData, action) => {
     return state
   }
   export default frozen
+*/
+
+/*
+  Note regarding dispatch and redux:
+  Redux is already performing dispatching actions in the background.
+  We just want to dispatch our own actions.
 */

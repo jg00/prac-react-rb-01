@@ -6,6 +6,8 @@ const seedData = [
 ];
 
 export default (state = seedData, action) => {
+  console.log("Meat reducer is running!");
+  console.log(action);
   return state;
 };
 

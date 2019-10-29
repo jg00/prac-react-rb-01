@@ -35,6 +35,7 @@ class ProduceDept extends Component {
         </div>
       );
     });
+
     return (
       <div>
         <h1>Produce Dept</h1>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import updateMeat from "../actions/meatInvUpdate";
+// import updateMeat from "../actions/meatInvUpdate";
 
 class MeatDept extends Component {
   increment = (operation, index) => {

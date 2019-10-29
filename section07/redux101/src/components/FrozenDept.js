@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import updateFrozen from "../actions/frozenInvUpdate";
+import { bindActionCreators } from "redux";
 
 class FrozenDept extends Component {
   increment = (operation, index) => {
-    console.log(operation, index);
-
-    if (operation === "+") {
-      //
-    } else if (operation === "-") {
-      //
-    }
+    // console.log(operation, index);
+    this.props.updateFrozen(operation, index); // we want to connect this to the dispatch so that it will go to every single reducer
   };
 
   render() {
@@ -49,11 +45,28 @@ class FrozenDept extends Component {
 function mapStateToProps(state) {
   return {
     frozenData: state.frozen
-    // meatData: state.meat
   };
 }
 
-export default connect(mapStateToProps)(FrozenDept);
+function mapDispatchToProps(dispatch) {
+  // this function returns "bindActionCreators"
+  // and we hand "bindActionCreators" an object:
+  // each property will be a local prop
+  // each value will be a function that is dispatch when run.
+  // 2nd arg for bindActionCreators is the dispatch
+
+  return bindActionCreators(
+    {
+      updateFrozen: updateFrozen
+    },
+    dispatch
+  );
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FrozenDept);
 
 /* 
   1 Connect this component to redux
@@ -92,4 +105,12 @@ export default connect(mapStateToProps)(FrozenDept);
     key - is the local prop name to this component
     value - is the piece of the redux store we want accessible as props to this component
 
+
+  6 function mapDispatchToProps()
+  - is how we tie our component to the dispatch
+  - it takes one arg which is the 'dispatch' function
+
+  (important) Remember that in the background
+  - redux is already sending it's own actions to dispatch.
+  - we just wnat to tie our own actions tot he same dispatch.
 */

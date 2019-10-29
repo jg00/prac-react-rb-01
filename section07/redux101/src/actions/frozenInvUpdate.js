@@ -1,6 +1,8 @@
-export default () => {
+export default (operation, index) => {
+  console.log(operation, index);
   return {
-    type: "updateFrozen"
+    type: "updateFrozen",
+    payload: { operation, index }
   };
 };
 
