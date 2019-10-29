@@ -1,13 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import updateMeat from "../actions/meatInvUpdate";
 
 class MeatDept extends Component {
+  increment = (operation, index) => {
+    console.log(operation, index);
+
+    if (operation === "+") {
+      //
+    } else if (operation === "-") {
+      //
+    }
+  };
+
   render() {
     const meatInventory = this.props.meatData.map((item, i) => {
       return (
-        <li key={i}>
-          {item.food}: {item.quantity}
-        </li>
+        <div key={i}>
+          <li>
+            {item.food}: {item.quantity}
+          </li>
+          <input
+            type="button"
+            onClick={() => this.increment("+", i)}
+            value="+"
+          />
+          <input
+            type="button"
+            onClick={() => this.increment("-", i)}
+            value="-"
+          />
+        </div>
       );
     });
 

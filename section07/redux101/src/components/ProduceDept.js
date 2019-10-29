@@ -1,15 +1,38 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import updateProduce from "../actions/produceInvUpdate";
 
 class ProduceDept extends Component {
+  increment = (operation, index) => {
+    console.log(operation, index);
+
+    if (operation === "+") {
+      console.log(updateProduce());
+    } else if (operation === "-") {
+      //
+    }
+  };
+
   render() {
     // console.log(this.props.produceData);
 
     const produceInventory = this.props.produceData.map((item, i) => {
       return (
-        <li key={i}>
-          {item.food}: {item.quantity}
-        </li>
+        <div key={i}>
+          <li>
+            {item.food}: {item.quantity}
+          </li>
+          <input
+            type="button"
+            onClick={() => this.increment("+", i)}
+            value="+"
+          />
+          <input
+            type="button"
+            onClick={() => this.increment("-", i)}
+            value="-"
+          />
+        </div>
       );
     });
     return (
