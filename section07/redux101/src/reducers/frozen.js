@@ -1,4 +1,6 @@
-export default (state = [], action) => {
+const seedData = ["TV dinners", "Frozen Veggies", "Frozen Pizza"];
+
+export default (state = seedData, action) => {
   return state;
 };
 
