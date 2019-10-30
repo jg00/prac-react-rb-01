@@ -1,6 +1,7 @@
 // Action creator
 export default (operation, index) => {
-  console.log(operation, index);
+  console.log("Updating frozen inventory!!!");
+  // console.log(operation, index);
   return {
     type: "updateFrozen",
     payload: { operation, index }

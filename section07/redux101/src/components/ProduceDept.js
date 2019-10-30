@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 class ProduceDept extends Component {
   increment = (operation, index) => {
     // console.log(operation, index);
-    this.props.updateProduce(operation, index); // call the action creator that returns an action that is handed over to dispatch
+    this.props.updateProduce(operation, index); // call the action creator that returns an action that is handed over to dispatch to notify the reducers
   };
 
   render() {
