@@ -1,3 +1,4 @@
+// Action creator
 export default (operation, index) => {
   console.log(operation, index);
   return {

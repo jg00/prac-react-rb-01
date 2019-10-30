@@ -8,7 +8,19 @@ const seedData = [
 export default (state = seedData, action) => {
   console.log("Produce reducer is running!");
   console.log(action);
-  return state;
+
+  if (action.type === "updateProduce") {
+    console.log("I care about this action in produceReducer!!");
+    const newState = [...state];
+    if (action.payload.operation === "+") {
+      newState[action.payload.index].quantity++;
+    } else if (action.payload.operation === "-") {
+      newState[action.payload.index].quantity--;
+    }
+    return newState;
+  } else {
+    return state;
+  }
 
   /* Confirms that a dispatched action is sent to 'all' reducers.
   if (action.type === "updateFrozen") {

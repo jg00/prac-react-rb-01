@@ -1,6 +1,8 @@
-export default () => {
+// Action creator
+export default (operation, index) => {
   console.log("Updating produce inventory!!!");
   return {
-    type: "updateProduce"
+    type: "updateProduce",
+    payload: { operation, index }
   };
 };

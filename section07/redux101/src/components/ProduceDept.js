@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import updateProduce from "../actions/produceInvUpdate";
+import { bindActionCreators } from "redux";
 
 class ProduceDept extends Component {
   increment = (operation, index) => {
-    console.log(operation, index);
-
-    if (operation === "+") {
-      console.log(updateProduce());
-    } else if (operation === "-") {
-      //
-    }
+    // console.log(operation, index);
+    this.props.updateProduce(operation, index); // call the action creator that returns an action that is handed over to dispatch
   };
 
   render() {
@@ -51,4 +47,16 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ProduceDept);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      updateProduce: updateProduce
+    },
+    dispatch
+  );
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProduceDept);

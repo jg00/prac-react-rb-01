@@ -8,7 +8,19 @@ const seedData = [
 export default (state = seedData, action) => {
   console.log("Meat reducer is running!");
   console.log(action);
-  return state;
+
+  if (action.type === "updateMeat") {
+    console.log("I care about this action in meatReducer!!");
+    const newState = [...state];
+    if (action.payload.operation === "+") {
+      newState[action.payload.index].quantity++;
+    } else if (action.payload.operation === "-") {
+      newState[action.payload.index].quantity--;
+    }
+    return newState;
+  } else {
+    return state;
+  }
 };
 
 /*
