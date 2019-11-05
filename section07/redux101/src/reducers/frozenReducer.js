@@ -12,12 +12,16 @@ export default (state = seedData, action) => {
     console.log("I care about this action in frozenReducer!!");
 
     // We dont want to mutate state directly
-    const newState = [...state];
+    let newState = [...state];
     if (action.payload.operation === "+") {
       newState[action.payload.index].quantity++;
     } else if (action.payload.operation === "-") {
       newState[action.payload.index].quantity--;
     }
+    return newState;
+  } else if (action.type === "clearInventory") {
+    let newState = [...state];
+    newState.forEach((item, i) => (item.quantity = 0));
     return newState;
   } else {
     return state;
