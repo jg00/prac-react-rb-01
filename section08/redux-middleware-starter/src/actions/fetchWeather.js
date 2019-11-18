@@ -3,6 +3,7 @@ const weatherApi = "http://api.openweathermap.org/data/2.5/weather";
 const weatherAPIKey = "6f3f23c0f1a2fcb7edee25d08cb9cf62";
 const scale = "imperial"; //metric
 
+// This is our action creator that returns an action but we returned a promise to be dispatched when the async code is completed.
 // Async/Await version
 export default async city => {
   const weatherUrl = `${weatherApi}?q=${city}&units=${scale}&appid=${weatherAPIKey}`;
@@ -16,6 +17,8 @@ export default async city => {
     type: "cityUpdate",
     payload: response.data // response.data is a promise.  If 'resolved', the middleware 'redux-promise' will automatically fire the dispatch to the reducer (but will wait for the promise to resolve before it is dispatch). ( Important: response.data won't run until the .then runs.)
   };
+
+  // Side note: with redux-thunk it allows you to return a function instead. return ()=>{}
 };
 
 /*
