@@ -28,8 +28,6 @@ class Home extends Component {
       return <Spinner />;
     }
 
-    const recCities = <Cities cities={this.state.cities} />;
-
     return (
       <div className="container-fluid">
         <div className="row">
@@ -38,7 +36,9 @@ class Home extends Component {
               <SearchBox />
             </div>
           </div>
-          {recCities}
+          <div className="col s12">
+            <Cities cities={this.state.cities} />
+          </div>
         </div>
       </div>
     );
