@@ -99,7 +99,10 @@ class Home extends Component {
               />
 
               <div className="col s12">
-                <Activities activities={this.state.activities} />
+                <Activities
+                  activities={this.state.activities}
+                  header="Today in you area"
+                />
               </div>
 
               <Cities
